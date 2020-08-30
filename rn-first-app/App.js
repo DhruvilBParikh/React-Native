@@ -13,12 +13,18 @@ export default function App() {
     ])
   }
 
+  const handleDeleteGoal = (uid) => {
+    setGoals(currentGoals => {
+      return currentGoals.filter((goal) => goal.uid!=uid)
+    })
+  }
+
   return (
     <View style={{ margin: 40 }} >
       <GoalInput onAddGoal={handlePress} />
       <FlatList
         keyExtractor={(item, index)=>item.uid}
-        data={goals} renderItem={itemData => (<GoalItem title={itemData.item.value} />)}
+        data={goals} renderItem={itemData => (<GoalItem uid={itemData.item.uid} title={itemData.item.value} onDelete={handleDeleteGoal} />)}
       />
     </View>
   );
