@@ -25,12 +25,6 @@ export default function App() {
     setIsModelOpen(false)
   }
 
-  const handleDeleteGoal = (uid) => {
-    setGoals(currentGoals => {
-      return currentGoals.filter((goal) => goal.uid!=uid)
-    })
-  }
-
   return (
     <View style={{ margin: 40 }} >
       <Button title="Add New Goal" onPress={()=>setIsModelOpen(true)} />
